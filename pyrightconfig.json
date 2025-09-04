@@ -1,0 +1,10 @@
+{
+  "typeCheckingMode": "strict",
+  "reportUnknownParameterType": "error",
+  "reportUnknownArgumentType": "error",
+  "reportUnknownVariableType": "error",
+  "reportUnknownMemberType": "error",
+  "reportUntypedFunctionDecorator": "error",
+  "reportMissingTypeStubs": "warning",
+  "exclude": ["**/.venv", "**/.pytest_cache", "**/__pycache__"]
+}
