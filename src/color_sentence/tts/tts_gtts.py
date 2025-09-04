@@ -1,6 +1,9 @@
 # src/color_sentence/tts_gtts.py
 from __future__ import annotations
 
+from color_sentence.config.audio_config import LINUX_PRIMARY_PLAYER, LINUX_FFMPEG, LINUX_APLAY, WAV_CODEC, WAV_CHANNELS, \
+    WAV_RATE_HZ, WINDOWS_PRIMARY_PLAYER, WINDOWS_POWERSHELL_CANDIDATES
+
 """
 gTTS backend with a small on-disk cache.
 Supported OS: Linux and Windows.
@@ -17,7 +20,6 @@ Windows playback (in order):
 from dataclasses import dataclass
 from hashlib import sha1
 from pathlib import Path
-from typing import Final
 
 import errno
 import os
@@ -31,17 +33,6 @@ from gtts.tts import gTTSError
 
 from color_sentence.config import config as cfg
 from color_sentence.config.types import ITTS
-
-LINUX_PRIMARY_PLAYER: Final[str] = "ffplay"
-LINUX_FFMPEG: Final[str] = "ffmpeg"
-LINUX_APLAY: Final[str] = "aplay"
-
-WINDOWS_PRIMARY_PLAYER: Final[str] = "ffplay"
-WINDOWS_POWERSHELL_CANDIDATES: Final[tuple[str, ...]] = ("powershell", "powershell.exe")
-
-WAV_CODEC: Final[str] = "pcm_s16le"
-WAV_CHANNELS: Final[str] = "1"
-WAV_RATE_HZ: Final[str] = "22050"
 
 
 def _prepare_text_for_gtts(text: str) -> str:
